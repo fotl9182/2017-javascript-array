@@ -4,10 +4,17 @@
     <script type="text/javascript">
         function calculate(arr) {
           var result = 0;
-          // TODO : ì—¬ê¸°ì— ì—¬ëŸ¬ë¶„ì´ ì§ì ‘ ì½”ë”©ì„ í•´ì£¼ì„¸ìš”.       
-          return result;
-        }
-
+          // TODO : ¿©±â¿¡ ¿©·¯ºĞÀÌ Á÷Á¢ ÄÚµùÀ» ÇØÁÖ¼¼¿ä. 
+		for(var i = 0; i < arr.length; i++) {
+			if(typeof(arr[i]) == 'string') {
+				(arr[i] == '+') ? arr[i+1] = arr[i-1] + arr[i+1] : false;
+				(arr[i] == '-') ? arr[i+1] = arr[i-1] - arr[i+1] : false;
+				(arr[i] == '*') ? arr[i+1] = arr[i-1] * arr[i+1] : false;
+			 }
+		 } 
+		  result = arr[i-1];      
+     return result;
+    }
         expect(calculate([1, '+', 2]), 3);
         expect(calculate([1, '-', 2]), -1);
         expect(calculate([1, '*', 2]), 2);
@@ -15,11 +22,10 @@
         expect(calculate([1, '*', 2, '+', 3, '*', 10]), 50);
         expect(calculate([10, '-', 10, '*', 3, '+', 10, '-', 10]), 0);
         expect(calculate([5, '*', 5, '*', 10, '+', 100, '-', 300]), 50);
-
         function expect(l, r) {
-            if (l === r)
+            if (l === r)  
                 console.log('pass');
-            else
+            else  
                 console.log('fail');
         }
     </script>
